@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 function App() {
   //used to set Midi Keyboard Mapping
   const [rootKey, setRootKey] = useState("C");
+  const [rootFreq, setRootFreq] = useState("261.63");
 
   const [sa, setSa] = useState("1");
   const [komalRe, setKomalRe] = useState("16/15");
@@ -21,7 +22,10 @@ function App() {
   const [ni, setNi] = useState("15/8");
 
   useEffect(() => {
+    console.log("Root Freq: ", rootFreq);
+    console.log("Root Key: ", rootKey);
     console.log(
+      "Freq Table:",
       sa,
       komalRe,
       re,
@@ -50,7 +54,12 @@ function App() {
       <h2>Tone Shruti Synth</h2>
       <div className="freq-table">
         <div className="root-info">
-          <input type="text" placeholder="root-frequency" />
+          <label>Root Freq:</label>
+          <input
+            type="text"
+            placeholder="261.63"
+            onChange={(e) => setRootFreq(e.target.value)}
+          />
           <label>Root Key:</label>
           <select className="root-note" onChange={changeKey}>
             <option value="C">C</option>
