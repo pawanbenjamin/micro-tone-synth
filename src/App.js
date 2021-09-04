@@ -1,11 +1,16 @@
 import "./App.css";
 
 import * as Tone from "tone";
+
 import { useEffect, useState } from "react";
+
+import MidiInfo from "./Midi";
+import Synth from "./Synth";
 
 function App() {
   //used to set Midi Keyboard Mapping
   const [rootKey, setRootKey] = useState("C");
+
   const [rootFreq, setRootFreq] = useState("261.63");
 
   const [sa, setSa] = useState("1");
@@ -52,6 +57,24 @@ function App() {
   return (
     <div className="App">
       <h2>Tone Shruti Synth</h2>
+      <Synth
+        Tone={Tone}
+        scale={{
+          sa,
+          komalRe,
+          re,
+          komalGa,
+          ga,
+          ma,
+          tivraMa,
+          pa,
+          komalDha,
+          dha,
+          komalNi,
+          ni,
+        }}
+      />
+      <MidiInfo Tone={Tone} />
       <div className="freq-table">
         <div className="root-info">
           <label>Root Freq:</label>
